@@ -1,9 +1,9 @@
 import requests as R
 import json
 
-passwd = input("Input Your Password: ")
+pwd  = input("enter ur password >> ")
 
-session = R.post("http://www.weimiaoqu.com/index.php?m=Users&a=checklogin", data={"username":"吃什么EatSmart","password":passwd}).headers["Set-Cookie"].split(";")[0].split("=")[1].strip()
+session = R.post("http://www.weimiaoqu.com/index.php?m=Users&a=checklogin", data={"username":"吃什么EatSmart","password":pwd}).headers["Set-Cookie"].split(";")[0].split("=")[1].strip()
 
 raw_list = R.get("http://www.weimiaoqu.com/index.php?g=User&m=Store&a=orders&token=axdaze1485238944",cookies={"PHPSESSID":session})
 
@@ -36,3 +36,7 @@ for i in bill_list:
         items.append(it)
 
 print(items)
+for i in items:
+    for k in i:
+        print(k, ':', i[k])
+    print('------------------------------')
