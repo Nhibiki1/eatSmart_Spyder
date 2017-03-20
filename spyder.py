@@ -4,9 +4,9 @@ import time
 import datetime
 import re
 
+pwd = input("enter ur pwd >>")
 
-
-session = R.post("http://www.weimiaoqu.com/index.php?m=Users&a=checklogin", data={"username":"吃什么EatSmart","password":'weimiaoqu'}).headers["Set-Cookie"].split(";")[0].split("=")[1].strip()
+session = R.post("http://www.weimiaoqu.com/index.php?m=Users&a=checklogin", data={"username":"吃什么EatSmart","password": pwd}).headers["Set-Cookie"].split(";")[0].split("=")[1].strip()
 
 raw_list = R.get("http://www.weimiaoqu.com/index.php?g=User&m=Store&a=orders&token=axdaze1485238944",cookies={"PHPSESSID":session})
 
